@@ -1,0 +1,141 @@
+[[language]]
+name = "python"
+scope = "source.python"
+injection-regex = "python"
+file-types = ["py", "pyi", "py3", "pyw", ".pythonstartup", ".pythonrc"]
+shebangs = ["python"]
+roots = ["pyrightconfig.json"]
+comment-token = "#"
+language-servers = ["pyright", "ruff"]
+indent = { tab-width = 4, unit = "\t"}
+auto-format = false
+
+[language.formatter]
+command = "black"
+args = [
+  "-",
+  "--quiet",
+  "--line-length=88"
+]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+
+[language-server.pyright.config]
+reportMissingTypeStubs = false
+venvPath = "./.venv/"
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+autoImportCompletions = true
+
+[language-server.ruff]
+command = "ruff-lsp"
+
+[language-server.ruff.config]
+settings = {args = []}
+
+
+# Typescript + React + Tailwind conf
+
+# Front-end
+[[language]]
+name = "typescript"
+scope = "source.ts"
+injection-regex = "(ts|typescript)"
+language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-react", "eslint"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json", "prettier.config.cjs"]
+file-types = ["ts", "mts", "cts"]
+# formatter = { command = 'prettier', args = ["--stdin-filepath", "file.ts", "--config-precedence", "prefer-file", "--use-tabs", "true"] }
+indent = { tab-width = 4, unit = "\t" }
+auto-format = true
+
+[[language]]
+language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-react", "eslint"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+name = "javascript"
+scope = "source.js"
+injection-regex = "(js|javascript)"
+file-types = ["js", "mjs", "cjs"]
+formatter = { command = 'prettier', args = ["--stdin-filepath", "file.js"] }
+auto-format = false
+
+[[language]]
+language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-react", "eslint"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+name = "jsx"
+scope = "source.jsx"
+injection-regex = "jsx"
+file-types = ["jsx"]
+formatter = { command = 'prettier', args = ["--stdin-filepath", "file.jsx"] }
+indent = { tab-width = 4, unit = "\t" }
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = [{ except-features = ["format"], name = "typescript-language-server" }, "eslint"] # shouldn't need to override this
+roots = ["package-lock.json", "tsconfig.json", ".prettierrc.json"] # shouldn't need to override this!
+formatter = { command = "prettier", args = ["--stdin-filepath", "file.tsx"]} # works without any args, the modifications end up in the buffer, unsaved
+auto-format = true
+
+[[language]]
+name = "html"
+scope = "text.html.basic"
+injection-regex = "html"
+file-types = ["html"]
+language-servers = ["tailwindcss-react","vscode-html-language-server"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+auto-format = true
+
+[[language]]
+name = "css"
+scope = "source.css"
+injection-regex = "css"
+file-types = ["css"]
+language-servers = ["tailwindcss-react", "vscode-css-language-server"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+auto-format = true
+
+[language-server.tailwindcss-react]
+language-id = "javascriptreact"
+command = "tailwindcss-language-server"
+config = { }
+args = ["--stdio"]
+timeout = 3
+
+[language-server.eslint]
+args = ["--stdio"]
+command = "vscode-eslint-language-server"
+
+[language-server.eslint.config]
+validate = "on"
+experimental = { useFlatConfig = false }
+rulesCustomizations = []
+run = "onType"
+problems = { shortenToSingleLine = false }
+nodePath = ""
+
+[language-server.eslint.config.codeAction]
+[language-server.eslint.config.codeAction.disableRuleComment]
+enable = true
+location = "separateLine"
+
+[language-server.eslint.config.codeAction.showDocumentation]
+enable = true
+
+[language-server.eslint.config.codeActionOnSave]
+enable = true
+mode = "fixAll"
+
+[language-server.eslint.config.workingDirectory]
+mode = "location"
+
+[language-server.typescript-language-server]
+args = ["--stdio"]
+command = "typescript-language-server"
+
+[language-server.typescript-language-server.config]
+documentFormatting = false
+

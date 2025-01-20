@@ -1,0 +1,50 @@
+theme = "onedark"
+
+[editor]
+true-color = true
+mouse = false
+bufferline = "always"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+C-s = ":write"
+C-x = ":wq"
+C-f = "search"
+C-p = "file_picker_in_current_directory"
+C-g = "goto_line"
+C-right = "move_next_long_word_end"
+C-left = "move_prev_long_word_start"
+C-r = "rename_symbol"
+C-space = "completion"
+S-home = "extend_line"
+S-end = "extend_line"
+S-pageup = "page_up"
+S-pagedown = "page_down"
+S-i = "page_up"
+S-k = "page_down"
+A-down = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+A-up = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+
+[keys.insert]
+C-p = "file_picker_in_current_directory"
+C-s = ":write"
+C-f = "search"
+C-x = ":wq"
+C-z = "undo"
+C-y = "redo"
+C-r = "rename_symbol"
+C-space = "completion"
+pageup = "page_up"
+pagedown = "page_down"
+
+
+[keys.normal."space".w]
+"[" = "jump_view_left"
+"]" = "jump_view_right"
