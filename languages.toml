@@ -48,7 +48,7 @@ injection-regex = "(ts|typescript)"
 language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-react", "eslint"]
 roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json", "prettier.config.cjs"]
 file-types = ["ts", "mts", "cts"]
-# formatter = { command = 'prettier', args = ["--stdin-filepath", "file.ts", "--config-precedence", "prefer-file", "--use-tabs", "true"] }
+formatter = { command = 'prettier', args = ["--stdin-filepath", "file.ts", "--config-precedence", "prefer-file", "--use-tabs", "true"] }
 indent = { tab-width = 4, unit = "\t" }
 auto-format = true
 
