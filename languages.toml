@@ -75,7 +75,7 @@ auto-format = true
 
 [[language]]
 name = "tsx"
-language-servers = [{ except-features = ["format"], name = "typescript-language-server" }, "eslint"] # shouldn't need to override this
+language-servers = [{ except-features = ["format"], name = "typescript-language-server" }, "eslint", "tailwindcss-react"] # shouldn't need to override this
 roots = ["package-lock.json", "tsconfig.json", ".prettierrc.json"] # shouldn't need to override this!
 formatter = { command = "prettier", args = ["--stdin-filepath", "file.tsx"]} # works without any args, the modifications end up in the buffer, unsaved
 auto-format = true
